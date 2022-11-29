@@ -1,0 +1,71 @@
+University admission management system
+import java.util.*;//Let us rock and roll
+public class Project3
+{
+    Scanner sc=new Scanner(System.in);
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("\t\t🙏🙏Welcome to HTY University");
+        System.out.println("\nchoose the Stream:");
+        System.out.println("1.Degree\n2.B.Tech\n3.Masters");
+        int num=sc.nextInt();
+        Details d=new Details();
+        d.student(num);
+    }
+}
+class Details
+{
+    public static void student(int num)
+    {
+        Scanner s=new Scanner(System.in);
+         String c1="";
+        switch(num)
+        {
+            case 1:
+                System.out.println("\nSelect the Group :\n1.B.A\n2.B.COM\n3.B.SC");
+                c1=s.nextLine();
+                getdetails();
+                break;
+            case 2:
+                System.out.println("\nSelect the Branch :\n1.ME\n2.EEE\n3.ECE\n4.CSE\n5.AI");
+                c1=s.nextLine();
+                getdetails();
+                break;
+            case 3:
+                System.out.println("\nSelect the course:\n1.M.Tech\n2.MBA\n3.MCA");
+                c1=s.nextLine();
+                getdetails();
+                break;
+        }
+        
+    }
+    public static void getdetails()
+    {
+        Scanner sz=new Scanner(System.in);
+        System.out.println("\nEnter the student details\n");
+        System.out.println("Enter the name of the student:");
+        String s1=sz.nextLine();
+        System.out.println("Enter the qualification of the student:");
+        String ch=sz.nextLine();
+        System.out.println("Enter the percentage of "+ch+":");
+        float d=sz.nextFloat();
+        if(d<=50)
+        {
+            System.out.println("\nSorry..!, you are not eligible");
+        }
+        else
+        {
+            System.out.println("Gender:\n1:Male\n2.Female\n3.other");
+            int ns=sz.nextInt();
+            System.out.println("Enter your phone number:");
+            long d4=sz.nextLong();
+            System.out.println("\n\nHi "+s1+",we received your application\nWe will contact you for further details");
+            System.out.println("your temporary ID is 56473");
+            System.out.println("your details:\nName: "+s1+"\nPhone: "+d4);
+            System.out.println("\n\nContact us through email:htyuniversity@gmail.com");
+            System.out.println("\n\t\t THANK YOU");
+        }
+        
+    }
+}
