@@ -1,0 +1,133 @@
+Create a Bank Management System( Console based mini project). 
+import java.util.*;
+class Operations{
+    private String accno;
+    private String name;
+    private long balance;
+    Scanner s=new Scanner(System.in);
+    //method to open an account
+    void openAccount()
+    {
+        System.out.println("Enter your name: ");
+        name=s.nextLine();
+         System.out.println("Enter your Account number: ");
+        accno=s.nextLine();
+         System.out.println("Enter your Balance: ");
+        balance=s.nextLong();
+    }
+    //method tp display account details
+    void accountDetails()
+    {
+        System.out.println("Your Account Details");
+        System.out.println(" Name: "+name+"\n Account Number: "+accno+"\n Balance ammount: "+balance);
+    }
+    //method to deposit money
+    void deposit()
+    {
+        System.out.println("welcome "+name+"\n Enter the amount you want to deposit: ");
+        long da=s.nextLong();
+        balance+=da;
+         System.out.println("your current balance: "+balance);
+    }
+    //method to withdraw money
+    void withdraw()
+    {
+        System.out.println("welcome "+name+"\n Enter the amount you want to withdraw: ");
+        long wa=s.nextLong();
+        if(balance>=wa)
+        {
+             balance-=wa;
+        System.out.println("your current balance: "+balance);
+        }
+        else{
+        System.out.println("you dont have enough balance to with draw amount   :(  :(  :(");
+        System.out.println("your current balance: "+balance+"\n you can withdraw the amount with in the balance  :) :) :)");
+        }
+    }
+    //method to search an account number
+    boolean search(String acn)
+    {
+        if(accno.equals(acn)){/*we can use "==" also  (method used to show details of account if number is given correctly) */
+            accountDetails();
+            return true;
+        }
+        else
+        return false;//can return false even if else keyword is not mentioned
+    }
+}
+//main class  
+public class Bank{
+    public static void main(String args[]){
+        Scanner sc=new Scanner(System.in);
+        //create initial account
+        System.out.println("\t*****Welcome*****\n How many customers are needed");
+        int c=sc.nextInt();
+        Operations op[]=new Operations[c];
+        for(int i=0;i<op.length;i++)
+        {
+            op[i]=new Operations();
+            op[i].openAccount();
+        }
+        //run the loop until 5 is not pressed
+        int ch;
+        do{
+            System.out.println("Main Menu :\n 1.Display All\n 2.Search Account\n 3.Deposit Amount\n 4.Withdraw amount\n 5.Exit");
+            System.out.println("\n\nEnter your choice:");
+            ch=sc.nextInt();
+            switch(ch)
+            {
+                case 1:
+                    for(int i=0;i<op.length;i++)
+                    op[i].accountDetails();
+                    break;
+                case 2:
+                    System.out.println("Enter account number:");
+                    String acn=sc.next();
+                    boolean found=false;
+                    for(int i=0;i<op.length;i++){
+                        found=op[i].search(acn);
+                        if(found){
+                        break;
+                        }
+                    }
+                        if(!found){
+                        System.out.println("Search Failed!!!!...  ;( ..Your account not found");
+                    }
+                    break;
+                    case 3:
+                    System.out.println("Enter account number:");
+                    acn=sc.next();
+                    found=false;
+                    for(int i=0;i<op.length;i++){
+                        found=op[i].search(acn);
+                        if(found){
+                        op[i].deposit();
+                        break;
+                        }
+                    }
+                        if(!found){
+                        System.out.println("Search Failed!!!!...  ;( ..Your account not found");
+                    }
+                    break;
+                    case 4:
+                    System.out.println("Enter account number:");
+                    acn=sc.next();
+                    found=false;
+                    for(int i=0;i<op.length;i++){
+                        found=op[i].search(acn);
+                        if(found){
+                        op[i].withdraw();
+                        break;
+                        }
+                    }
+                        if(!found){
+                        System.out.println("Search Failed!!!!...  ;( ..Your account not found");
+                    }
+                    break;
+                    case 5:
+                        System.out.println("\tThank you for using our services\n\t\tsee you Again..\n \t\tGood bye!!!!!");
+                        break;
+            }
+        }while(ch!=5);
+    }
+}
