@@ -1,0 +1,76 @@
+Super market billiing system
+//Let us rock and roll
+import java.util.*;
+public class Project
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("\t\t *******WELCOME*******\n");
+        System.out.println("\t\t    BPS SUPERMARKET\n");
+        System.out.println("Enter number of items you want to purchase : ");
+        int n=sc.nextInt();
+        float asum=0,vc=0,dc=0;
+        for(int i=1;i<=n;i++)
+        {
+            System.out.println("\nSelect the type of item: \n1.Products\n2.Vegetables and Fruits\n3.Dairy products\n");
+            int k=sc.nextInt();
+            switch(k)
+            {
+                case 1:
+                    System.out.println("Select the item:\n1.Clothes\n2.Toys\n3.Electronics\n4.Stationary Materials\n"); 
+                    int s=sc.nextInt();
+                    System.out.println("Enter number of products:");
+                    float n1=sc.nextFloat();
+                    System.out.println("Enter the price of product : ");
+                    float a=sc.nextFloat();
+                    asum=asum+(a*n1);
+                    break;
+                case 2:
+                    System.out.println("Select the item:\n1.Vegetables\n2.Spinach\n3.Fruits\n");    
+                    int s1=sc.nextInt();
+                    System.out.println("Enter number of items:");
+                    float n2=sc.nextFloat();
+                    System.out.println("cost of one item");
+                    float v=sc.nextFloat();
+                    vc=vc+(n2*v);
+                    break;
+                case 3:
+                    System.out.println("Select the item:\n1.Cheese and Butter\n2.Chocolates\n3.Drinks\n");    
+                    int s2=sc.nextInt();
+                    System.out.println("Enter number of items:");
+                    float n3=sc.nextFloat();
+                    System.out.println("cost of one item");
+                    float d=sc.nextFloat();
+                    dc=dc+(n3*d);
+                    break;
+            }
+        }
+        float total=asum+vc+dc;
+        float dis,price;
+        if(total>=2000)
+        {
+            dis=95f;
+            System.out.printf("The total amount is: %.2f",total);
+            System.out.println();
+            price=total*dis/100;
+            System.out.printf("The amount you have to pay after discount %.2f\n",price);
+            System.out.printf("The total amount you saved:  %.2f",total-price);
+        }
+        else if(total>=1000)
+        {
+            dis=97.5f;
+            System.out.printf("The total amount is: %.2f",total);
+            System.out.println();
+            price=total*dis/100;
+            System.out.printf("The amount you have to pay after discount %.2f\n",price);
+            System.out.printf("The total amount you saved:  %.2f",total-price);
+        }
+        else
+        {
+            System.out.printf("The total amount is: %.2f\n",total);
+            System.out.println("you received no discount on your purchase \n As the total is below 1000\n");
+        }
+        System.out.printf("\n\t\t********THANK YOU********\n \t\tvisit us again\n\t\t from BPS Super market");
+    }
+}
